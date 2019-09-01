@@ -2,27 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DatingApp.Api.Repository.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyDatingapp.Api.Model;
 
 namespace MyDatingapp.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        public DatingAppContext Context { get; }
+        private readonly IAuth _authservice;
 
-        public ValuesController(DatingAppContext context)
+
+        public ValuesController(IAuth context)
         {
-            Context = context;
+            _authservice = context;
         }
         // GET api/values
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            var test = await Context.User.Where(x => x.Id != 0).Select(x=>x.Name).ToListAsync();
+            var test = await _authservice.CheckUserName("");
 
             return Ok(test);
         }

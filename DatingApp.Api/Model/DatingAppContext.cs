@@ -15,13 +15,13 @@ namespace MyDatingapp.Api.Model
         {
         }
 
-        public virtual DbSet<Test> Test { get; set; }
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Tuser> Tuser { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Server=Maneesh-pc;Database=DatingApp;User Id=sa;Password=123mails");
             }
         }
@@ -30,22 +30,13 @@ namespace MyDatingapp.Api.Model
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
-            modelBuilder.Entity<Test>(entity =>
+            modelBuilder.Entity<Tuser>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.ToTable("TUser");
 
-                entity.Property(e => e.Pa)
-                    .HasColumnName("pa")
-                    .HasMaxLength(10);
-            });
+                entity.Property(e => e.Name).IsUnicode(false);
 
-            modelBuilder.Entity<User>(entity =>
-            {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.Name)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.Password).HasMaxLength(50);
             });
         }
     }
