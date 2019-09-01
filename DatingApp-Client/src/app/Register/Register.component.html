@@ -1,0 +1,29 @@
+<form #regTemplate='ngForm' (submit)='Register(); regTemplate.reset();'>
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+        </div>
+        <input name="" class="form-control" required name='UserName' [(ngModel)]="model.UserName" placeholder="Full name" type="text">
+    </div>
+
+    <!-- form-group end.// -->
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+        <input class="form-control" required name='Password' [(ngModel)]="model.Password" placeholder="Create password" type="password">
+    </div>
+    <!-- form-group// -->
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+        <input class="form-control" required name='Password' [(ngModel)]="model.Password" placeholder="Repeat password" type="password">
+    </div>
+    <!-- form-group// -->
+    <div class="form-group">
+        <button type="submit" [disabled]='!regTemplate.valid' class="btn btn-primary btn-block"> Create Account  </button>
+    </div>
+    <!-- form-group// -->
+    <p class="text-center">Have an account? <a href="#" (click)='gotoLogin()'>Log In</a> </p>
+</form>

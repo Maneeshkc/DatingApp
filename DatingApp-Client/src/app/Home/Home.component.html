@@ -1,0 +1,13 @@
+<div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+        <h4 class="card-title mt-3 text-center">Create Account</h4>
+        <p class="text-center">Get started with your free account</p>
+        <p>
+            <a href="" class="btn btn-success btn-twitter mr-5">   Login via Twitter</a>
+            <a href="" class="btn btn-danger btn-facebook">  Login via facebook</a>
+        </p>
+
+        <app-Register *ngIf="isRegister" (logEmitter)="navigateHome($event)"></app-Register><br>
+        <app-Login *ngIf="!isRegister" (regEmitter)="navigateHome($event)"></app-Login>
+    </article>
+</div>

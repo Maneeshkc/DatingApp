@@ -1,0 +1,23 @@
+<form #loginForm='ngForm' (submit)='Login()'>
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+        </div>
+        <input name="" class="form-control" name='UserName' required placeholder="Full name" [(ngModel)]="model.UserName" type="text">
+    </div>
+
+    <!-- form-group end.// -->
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+        <input class="form-control" name='Password' required placeholder="Password" [(ngModel)]="model.Password" type="password">
+    </div>
+
+    <!-- form-group// -->
+    <div class="form-group">
+        <button type="submit" [disabled]='!loginForm.valid' class="btn btn-primary btn-block"> Login  </button>
+    </div>
+    <!-- form-group// -->
+    <p class="text-center">Have No account? <a href="#" (click)='gotoRegister()'>Register</a> </p>
+</form>
