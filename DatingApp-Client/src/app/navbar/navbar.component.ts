@@ -1,3 +1,4 @@
+import { AlertifyService } from './../_services/alertify.service';
 import { AuthService } from './../_services/Auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   model: any = {};
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private alertify: AlertifyService) { }
 
   ngOnInit() {
   }
@@ -18,8 +19,8 @@ export class NavbarComponent implements OnInit {
   Login() {
     this.authService.Login(this.model).subscribe((res) => {
       const token = localStorage.getItem('token');
-      console.log(token);
-    }, (err) => { console.log(err); });
+      this.alertify.success('success');
+    }, (err) => { this.alertify.error(err); });
   }
 
   logout() {
