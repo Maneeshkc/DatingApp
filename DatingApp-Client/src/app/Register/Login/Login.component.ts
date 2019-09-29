@@ -1,5 +1,6 @@
 import { AuthService } from './../../_services/Auth.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-Login',
@@ -10,7 +11,7 @@ export class LoginComponent implements OnInit {
 
   model: any = {};
   @Output() regEmitter = new EventEmitter();
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
       this.model = {};
       this.regEmitter.emit(true);
 
-    }, (err) => { console.log(err); });
+    }, (err) => { console.log(err); }, () => { this.router.navigate(['/members']); });
   }
 
 }

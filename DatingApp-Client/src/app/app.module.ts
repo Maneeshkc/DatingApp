@@ -1,3 +1,4 @@
+import { routes } from './../route';
 import { LoginComponent } from './Register/Login/Login.component';
 import { AuthService } from './_services/Auth.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,6 +10,11 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './Home/Home.component';
 import { RegisterComponent } from './Register/Register.component';
+import { MemebersComponent } from './memebers/memebers.component';
+import { ListComponent } from './list/list.component';
+import { MessagesComponent } from './messages/messages.component';
+import { RouterModule } from '@angular/router';
+import { RoutegardGuard } from './_guards/routegard.guard';
 
 @NgModule({
    declarations: [
@@ -16,15 +22,20 @@ import { RegisterComponent } from './Register/Register.component';
       NavbarComponent,
       HomeComponent,
       RegisterComponent,
-      LoginComponent
+      LoginComponent,
+      MemebersComponent,
+      ListComponent,
+      MessagesComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
-      FormsModule
+      FormsModule,
+      RouterModule.forRoot(routes)
    ],
    providers: [
-      AuthService
+      AuthService,
+      RoutegardGuard
    ],
    bootstrap: [
       AppComponent

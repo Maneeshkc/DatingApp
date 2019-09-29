@@ -16,6 +16,13 @@ export class AuthService {
       }));
   }
 
+  IsLogin() {
+    if (localStorage.getItem('token') === null) {
+      return false;
+    }
+    return true;
+  }
+
   Register(model: any) {
     return this.http.post(this.baseUrl + 'auth/Register', model)
       .pipe(map((res: any) => {
