@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DatingApp.Api.Data;
 using DatingApp.Api.Repository.Implimenation;
 using DatingApp.Api.Repository.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -38,7 +39,10 @@ namespace MyDatingapp.Api
             services.AddDbContext<DatingAppContext>(option => option.UseSqlServer("Server=Maneesh-pc;Database=DatingApp;User Id=sa;Password=123mails"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors();
+            services.AddTransient<seed>();
             services.AddScoped<IAuth, Auth>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
@@ -54,7 +58,7 @@ namespace MyDatingapp.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, seed seeder)
         {
             if (env.IsDevelopment())
             {
@@ -65,6 +69,7 @@ namespace MyDatingapp.Api
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 //app.UseHsts();
             }
+           // seeder.SeedAlldata();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             // app.UseHttpsRedirection();

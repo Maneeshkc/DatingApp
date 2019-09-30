@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using DatingApp.Api.Data;
 using DatingApp.Api.Dto;
 using DatingApp.Api.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
@@ -48,6 +49,7 @@ namespace DatingApp.Api.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login(LoginDto login)
         {
+            
             var userFromDb = await _authservice.Login(login.UserName, login.Password);
             if (userFromDb == null)
                 return Unauthorized("not authorized to view this page");
