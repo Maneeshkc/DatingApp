@@ -1,3 +1,7 @@
-<p>
-  memebers works!
-</p>
+<div class="container">
+    <div class="row mt-4">
+        <div *ngFor="let u of users" class="col-lg-2 col-md-3 col-sm-6">
+            <app-member-item [user]='u'></app-member-item>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+
 
 namespace DatingApp.Api.Dto
 {
@@ -31,6 +33,7 @@ namespace DatingApp.Api.Dto
         public string Country { get; set; }
 
         public string ProfileUrl { get; set; }
+        public List<string> Photo {get;set;}
 
     }
 }

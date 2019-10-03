@@ -42,5 +42,34 @@ namespace DatingApp.Api.Controllers
             }).ToList();
             return Ok(membersDto);
         }
+
+        [HttpGet("GetUser/{id}")]
+        public async Task<ActionResult> GetUser(int id)
+        {
+            var x = await _profileRepo.GetTuser(id);
+            if (x != null)
+            {
+                var userDto = new ProfileDTO()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    City = x.City,
+                    Country = x.Country,
+                    Created = x.Created,
+                    DateOfBirth = x.DateOfBirth,
+                    Gender = x.Gender,
+                    Interests = x.Interests,
+                    Introduction = x.Introduction,
+                    KnownAs = x.KnownAs,
+                    LastActive = x.LastActive,
+                    LookingFor = x.LookingFor,
+                    Photo=x.TuserPhoto.Select(p=>p.Url).ToList(),
+                    ProfileUrl = x.TuserPhoto.FirstOrDefault(y => y.IsMain == true) == null ? "" : x.TuserPhoto.FirstOrDefault(y => y.IsMain == true).Url
+                };
+                return Ok(userDto);
+            }
+            return NotFound("id not found!");
+
+        }
     }
 }

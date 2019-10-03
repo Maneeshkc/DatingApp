@@ -1,0 +1,30 @@
+.card-img-wrapper:hover img {
+    transform: scale(1.5);
+    transition-duration: 500ms;
+    opacity: .7;
+}
+
+.card {
+    overflow: hidden;
+}
+
+img {
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.card-img-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.member-icon {
+    opacity: 0;
+    top: 0px;
+}
+
+.card-img-wrapper:hover .member-icon {
+    opacity: 1;
+    position: relative;
+    top: -55px;
+}

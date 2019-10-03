@@ -1,3 +1,4 @@
+import { MemberDetailsComponent } from './app/memebers/member-Details/member-Details.component';
 import { RoutegardGuard } from './app/_guards/routegard.guard';
 import { LoginComponent } from './app/Register/Login/Login.component';
 import { MemebersComponent } from './app/memebers/memebers.component';
@@ -12,7 +13,9 @@ export const routes: Routes = [
         path: '', runGuardsAndResolvers: 'always', canActivate: [RoutegardGuard],
         children: [{ path: 'messages', component: MessagesComponent },
         { path: 'list', component: ListComponent },
-        { path: 'members', component: MemebersComponent }]
+        { path: 'members', component: MemebersComponent },
+        { path: 'memberDetails/:id', component: MemberDetailsComponent }
+        ]
     }
     ,
     { path: '**', redirectTo: '', pathMatch: 'full' }

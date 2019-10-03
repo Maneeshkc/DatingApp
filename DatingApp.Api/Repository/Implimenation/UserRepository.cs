@@ -30,7 +30,7 @@ namespace DatingApp.Api.Repository.Implimenation
 
         public async Task<Tuser> GetTuser(int id)
         {
-            var user = await _context.Tuser.Where(x => x.Id == id).FirstOrDefaultAsync();
+            var user = await _context.Tuser.Include(x=>x.TuserPhoto).Where(x => x.Id == id).FirstOrDefaultAsync();
             return user;
         }
 

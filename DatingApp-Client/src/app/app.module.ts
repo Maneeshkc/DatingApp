@@ -1,3 +1,6 @@
+import { MemberDetailsComponent } from './memebers/member-Details/member-Details.component';
+import { MemberItemComponent } from './memebers/member-item/member-item.component';
+import { UserService } from './_services/User.service';
 import { routes } from './../route';
 import { LoginComponent } from './Register/Login/Login.component';
 import { AuthService } from './_services/Auth.service';
@@ -15,6 +18,7 @@ import { ListComponent } from './list/list.component';
 import { MessagesComponent } from './messages/messages.component';
 import { RouterModule } from '@angular/router';
 import { RoutegardGuard } from './_guards/routegard.guard';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 @NgModule({
    declarations: [
@@ -25,17 +29,21 @@ import { RoutegardGuard } from './_guards/routegard.guard';
       LoginComponent,
       MemebersComponent,
       ListComponent,
-      MessagesComponent
+      MessagesComponent,
+      MemberItemComponent,
+      MemberDetailsComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      NgxGalleryModule,
       RouterModule.forRoot(routes)
    ],
    providers: [
       AuthService,
-      RoutegardGuard
+      RoutegardGuard,
+      UserService
    ],
    bootstrap: [
       AppComponent

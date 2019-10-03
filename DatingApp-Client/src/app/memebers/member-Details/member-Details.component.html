@@ -1,0 +1,70 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <img src="{{user?.profileUrl}}" alt="" class="card-img-top">
+                <div class="card-body">
+                    {{user?.knownAs}}
+                    <div>
+                        <p>Last Active: {{user?.lastActive | date: 'dd/MM/yyyy'}}</p>
+                    </div>
+                    <div>
+                        <p> Active From: {{user?.created | date: 'dd/MM/yyyy'}}</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="btn-group mr-2" style='width: 100%' role="group" aria-label="First group">
+                        <button type="button" class="btn btn-success">Frist Button</button>
+                        <button type="button" class="btn btn-danger">Second</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8 card">
+
+
+
+            <section id="tabs" class="project-tab">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nav>
+                                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link" [ngClass]="{active: tabIndex==1}" (click)='TabClick(1)' id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="true">About {{user?.knownAs}}</a>
+                                    <a class="nav-item nav-link" [ngClass]="{active: tabIndex==2}" (click)='TabClick(2)' id="nav-profile-tab" data-toggle="tab" role="tab" aria-controls="nav-profile" aria-selected="false">Interest</a>
+                                    <a class="nav-item nav-link" [ngClass]="{active: tabIndex==3}" (click)='TabClick(3)' id="nav-contact-tab" data-toggle="tab" role="tab" aria-controls="nav-contact" aria-selected="false">Photos</a>
+                                    <a class="nav-item nav-link" [ngClass]="{active: tabIndex==4}" (click)='TabClick(4)' id="nav-contact-tab" data-toggle="tab" role="tab" aria-controls="nav-contact" aria-selected="false">Messages</a>
+
+                                </div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade " [ngClass]="{'active show': tabIndex==1}" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                    <dl>
+                                        <dt>Description</dt>
+                                        <dd>{{user?.introduction}}}</dd>
+                                        <dt>Loogin For</dt>
+                                        <dd>{{user?.lookingFor}}</dd>
+                                    </dl>
+                                </div>
+                                <div class="tab-pane fade" [ngClass]="{'active show': tabIndex==2}" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                    <dl>
+                                        <dt>Interests</dt>
+                                        <dd>{{user?.interests}}</dd>
+
+                                    </dl>
+                                </div>
+                                <div class="tab-pane fade" [ngClass]="{'active show': tabIndex==3}" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                    <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                                </div>
+                                <div class="tab-pane fade" [ngClass]="{'active show': tabIndex==4}" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                    to do ....
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
